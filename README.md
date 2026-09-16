@@ -1,4 +1,4 @@
-# Four Friends Kitchen
+# Four Friends Kitchen   "https://subhatha.github.io/JASS/"
 
 Next.js 15 / React 19 website with a split entrance for the restaurant and JASS cookbook. The existing dark and gold visual direction is shared across all pages.
 
