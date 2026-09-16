@@ -1,6 +1,6 @@
 export function BuyButton() {
   return (
-    <div>
+    <div className="purchase-actions">
       <button className="button" disabled>
         Get your copy · $24.99 ↗
       </button>

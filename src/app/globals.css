@@ -256,6 +256,9 @@ img {
   color: var(--gold);
 }
 .cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 100px 24px;
   border-top: 1px solid var(--line);
@@ -407,6 +410,7 @@ img {
 }
 .menu-item > div:last-child {
   flex: 1;
+  min-width: 0;
 }
 .menu-item .eyebrow {
   font-size: 9px;
@@ -424,7 +428,8 @@ img {
   margin-bottom: 10px;
 }
 .menu-title > span {
-  color: var(--gold);
+  flex-shrink: 0;
+  white-space: nowrap;  color: var(--gold);
   font-size: 15px;
 }
 .menu-item p {
@@ -509,6 +514,31 @@ textarea::placeholder {
   margin-top: 18px;
   color: var(--ink);
   max-width: 550px;
+}
+.purchase-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  max-width: 550px;
+  min-width: 0;
+}
+.purchase-actions > .button {
+  max-width: 100%;
+  text-align: center;
+}
+.purchase-actions > .notice {
+  margin: 0;
+  max-width: 100%;
+}
+.cta > .purchase-actions {
+  align-items: center;
+}
+.book-copy,
+.two-col > *,
+.cards > * {
+  min-width: 0;
 }
 .book-theme {
   --bg: #171710;
@@ -991,4 +1021,26 @@ textarea::placeholder {
     min-height: 50svh;
     padding: 90px 20px;
   }
+}
+
+/* Keep the closing book purchase area aligned beneath its heading. */
+.chapter-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: min(100%, 360px);
+  margin-inline: auto;
+}
+.chapter-actions .purchase-actions {
+  align-items: stretch;
+}
+.chapter-actions .notice {
+  text-align: center;
+  border-left: 0;
+  border-top: 1px solid var(--gold);
+}
+.chapter-actions > .text-link {
+  margin: 0;
+  text-align: center;
 }

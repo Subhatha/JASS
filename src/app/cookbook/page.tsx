@@ -90,13 +90,15 @@ export default function Book() {
           <br />
           <em>home.</em>
         </h2>
-        <BuyButton />
-        <Link
-          href="/cookbook/faq"
-          className="text-link"
-        >
-          Questions about the book? →
-        </Link>
+        <div className="chapter-actions">
+          <BuyButton />
+          <Link
+            href="/cookbook/faq"
+            className="text-link"
+          >
+            Questions about the book? →
+          </Link>
+        </div>
       </section>
     </main>
   );

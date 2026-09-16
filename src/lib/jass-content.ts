@@ -1,19 +1,51 @@
+export type JassSummary = {
+  id: string;
+  title?: string;
+  paragraphs: string[];
+};
+
 export type JassStory = {
   id: string;
   name: string;
   role: string;
   portrait: string | null;
   portraitAlt: string;
+  summaries: JassSummary[];
   paragraphs: string[];
 };
 
 // Images live in public/images/jass.
-// Replace aaaaaa with the full story, using one string per paragraph.
+// Replace each aaaaaa in summaries with the original summary text.
+// Use one string per paragraph; leave the introduction paragraphs below unchanged.
 // Long stories automatically show a preview with a “Read more” button.
 export const jassStories: JassStory[] = [
   {
     id: "chef-susan",
     name: "Susan",
+    summaries: [
+      {
+        id: "for-subha",
+        paragraphs: [
+          "Dear Subha,",
+          "Our epic friendship did not start with a warm greeting. It started with professional ignoring. We both worked in the Island Hotel. Every single day, you walk past my station. No 'hello.\" No \"good morning.” Just pure, silent passing. We were like two ships passing in the night, the ships were surrounded by the noise of plates, glasses and cutleries.",
+          "After a couple of weeks, the ice finally melted. Suddenly, a miracle happened: we actually exchanged a “good morning.” From that day on, the floodgates opened. We went from absolute silence to talking about random topic. The turning point was a hilariously intense debate about Superman. I was desperately searching the internet for a link to watch the movie, probably looking stressed. Out of nowhere, you transformed into a hero, offering to hunt down the perfect link for me. Superman saved the day, but you saved the movie night.",
+          "As the weeks rolled by, we started digging into our passions. It turns out, you completely obsessed with technology and studying to be a web developer. My  eyes roll. For years, I had been searching for the perfect person to help me build my dream cookbook. We realized we shared the exact same passion for technology, with just one small difference: you are running on high-speed futuristic, modern code, and I am running on a decades-old system that I haven't practiced since the dawn of the internet. You are the high-tech future; I am the vintage past.",
+          "What started as silence in a busy hotel kitchen turned into a beautiful, kind friendship. Behind the quiet intern is an absolute genius with a brilliant mind and a good heart. No matter how crazy or stressful the kitchen gets, you are always there with a smile on his face, ready to help or share a laugh. I am grateful for the day you finally said \"good morning,\" and I cannot wait to see where our shared passions-and our cookbook-take us next.",
+        ],
+      },
+      {
+        id: "for-dimitri",
+        paragraphs: [
+          "Dear Dimitri,",
+          "Our friendship began simply. I am writing these words from the bottom of my heart to express how much your presence in my life means to me. When look back at how we first met, it fills me with humility to realize that a life-changing friendship can start with something as simple as a single fist bump.",
+          "We work in the same island hotel, yet our daily routines keep us in different worlds-you serving guests in F&B, and me working away in the main kitchen. We come from entirely different nationalities, speak different dialects, and possess completely different temperaments. By all logic, we should have been strangers. Yet, against all odds, we understand each other on a level that words cannot fully explain. I hold immense respect for the person you are. You carry the passionate soul of a musician and a tough, resilient spirit that inspires me, but beneath it all, you have one of the kindest hearts I have ever known.",
+          "Our friendship truly began to blossom and become beautiful the day I shared my love for dark hot chocolate. Your warmth made me feel safe enough to open up about my personal dreams and my deep goal of writing this cookbook.",
+          "I still smile and laugh warmly whenever I think about our little misunderstanding. I was so incredibly excited, dreaming of tasting and savoring the traditional hot chocolate from your humble village, made the old-fashioned way with a baterol. Meanwhile, you missed my cues entirely because your mind was filled only with thoughts of your village's traditional food!",
+          "Speaking of your home, I want to deeply thank your wonderful parents. Please pass along my humblest gratitude to them. Walking into their home and being welcomed so warmly is a memory I will cherish forever. Eating that delicious, traditional food together around the table made me feel like family, even though I am far from my own. They reflect the same beautiful kindness and strength that I see in you every day.",
+          "Thank you for being my trusted friend, my anchor on this island, and a true person to me. Most of all for helping me to achieve this dreams-our cookbook.",
+        ],
+      },
+    ],
     role: "CHEF",
     portrait: "/images/jass/susan.JPG",
     portraitAlt: "Susan, main chef",
@@ -70,7 +102,22 @@ export const jassStories: JassStory[] = [
   {
     id: "chef-dimitri",
     name: "Dimitri",
-    role: "CHEF",
+    summaries: [
+      {
+        id: "summary",
+        title: "How it all started",
+        paragraphs: [
+          "It’s really weird how people can meet sometimes. Plato said that friendship has to do with the connection of attraction and the search for commodity.",
+          "This is how me and Susan - in a way - could someone say that we met.",
+          "Everything started in 2025, during the hospitality season at Rhodes island while I was working as night room service. Most of the times I had to prepare the early breakfasts for the guest that they were leaving early in the morning. At the same time, in the same area, there was a petite woman who was preparing some hot meals for the buffet.",
+          "In the beginning we weren’t paying much attention to each other - it was in the first weeks of the hotels operation - and we just greeted each other in a typical way just saying “Good morning”.  But as the days were passing by I kept seeing a “bashful” person and a thought came to my head saying: “How would I feel working in a foreign country to a business in which I don’t know anyone, seeing different people and the majority are native Greeks”? Certainly not good, I thought. So my sensitive side said that I have to find a way to “break the ice” and cheer her up. So I came up with the “fist bump” greeting. The result was positive and she changed her mood, so every time that we were seeing each other we were doing the same “signature gesture”.",
+          "A couple of months later, an early morning in the kitchen, we greeted and had a small chat in which she revealed me her profession and what she achieved during the years. I confess that I was really amazed. She told me not to say anything to anyone and keep it a secret. “Always be humble”, she told me. In the next days she revealed me about her “in progress” project, about a cooking book. She told me that the main theme of the book is the traditional cooking and that the last part that was missing from it was Greece and that she will maybe give up because she didn’t knew anyone that could help her complete it. Then for a weird reason the conversation went really fast to my city Karditsa and some of the traditional foods that we have. She asked me in which part of Greece it was and she looked at it on the map. A couple of days later she told me that she would like me to help her with the last part of her book and become part of it. To be honest, I was a little hesitant because I didn’t knew how I would help her in this. I thought about it and I thought that it was something important to her and if I were in her shoes I would appreciate any kind of help. And the rest is history. In a short period of time we organised the things and the places that we had to visit. Our next meeting it was in my hometown in November, after we finished the work at the hotel. Our whole schedule lasted a week. We visited lots of places, we wandered around the city and to the beautiful outskirts that she told me it was similar with her home. We had a visit to an elderly couple that cooked us traditional food, we visited the field of herbs of Roulas and Ntinos showing us the machinery that they use and giving us an idea of how they use them, we paid a visit at our local winery of Mesenikolas village and had a taste of the procedure that they follow and we went  of course at my parents house. We saw a lot of traditional things and we ate traditional food. We also tried and drink Tsipouro but I think it was too strong for her.",
+          "In general, she is a good and kind person and she grew up in a different way than us, Greeks. I believe that us, Greeks, we are a hospitable nation by our nature. We always take care of our guests and we always give the best of ourselves to them. I think she felt it at a satisfying point and it was probably something different that she probably felt among the countries that she visited so far.",
+          "In conclusion, I believe that from all these, a different kind of friendship has been created. A friendship between two people (countries) with different mentalities, culture, tradition, temperament, which in this period of time, it supported difficult times, gave and took advices and until now share happy and sad moments.",
+        ],
+      },
+    ],
+    role: "MUSICIAN",
     portrait: "/images/jass/dimitri.png",
     portraitAlt: "Dimitri, chef",
     paragraphs: 
@@ -122,7 +169,22 @@ export const jassStories: JassStory[] = [
   {
     id: "developer-subhatha",
     name: "Subhatha",
-    role: "DEVELOPER",
+    summaries: [
+      {
+        id: "summary",
+        title: "How it all started",
+        paragraphs: [
+          "I’m an international Computer Engineering student studying in Latvia, and one summer I got the opportunity to travel to Greece and work as a waiter at Gennadi Grand Resort.",
+          "When I first arrived, everything was new. I didn’t know many people, and I was still trying to find my place. Then one ordinary day during lunch in the hotel cafeteria, a lady sitting nearby offered me some Tabasco. It was such a small moment, but somehow, that was the beginning of something much bigger.",
+          "Her name was Susan, a chef at Gennadi Grand Resort. As time passed, I got to know her and discovered what a genuine, kind, and interesting person she was.",
+          "One day, Susan was talking about a Spider-Man movie she really wanted to watch. I told her, “Maybe I can find a link for you.” From that little conversation, we somehow became good friends.",
+          "Eventually, I properly introduced myself and told her about my work with computers, programming, websites, and technology.",
+          "Then Susan told me about a dream she had, creating her own inspirational cookbook and having a website where she could share her recipes, experiences, and passion for cooking.",
+          "I simply said, **“Let’s do it.” And here we are.**",
+        ],
+      },
+    ],
+    role: "PROGRAMMER",
     portrait: "/images/jass/subhatha.jpg",
     portraitAlt: "Subhatha, developer",
     paragraphs:

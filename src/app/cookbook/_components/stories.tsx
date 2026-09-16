@@ -6,19 +6,45 @@ import Image from "next/image";
 import { jassStories } from "@/lib/jass-content";
 import styles from "./storytelling.module.css";
 
+function ExpandableText({ id, paragraphs }: { id: string; paragraphs: string[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const opening = paragraphs[0] ?? "";
+  const needsExpansion = opening.length > 240 || paragraphs.length > 1;
+  const preview = opening.length > 240
+    ? `${opening.slice(0, 240).replace(/\s+\S*$/, "")}…`
+    : opening;
+  const visibleParagraphs = expanded ? paragraphs : [preview];
+
+  return (
+    <>
+      <div id={`${id}-text`} className={styles.paragraphs}>
+        {visibleParagraphs.map((paragraph, index) => (
+          <p key={`${id}-${index}`}>
+            {paragraph.split(/(\*\*[^*]+\*\*)/g).map((part, partIndex) =>
+              part.startsWith("**") && part.endsWith("**")
+                ? <strong key={partIndex}>{part.slice(2, -2)}</strong>
+                : part
+            )}
+          </p>
+        ))}
+      </div>
+      {needsExpansion && (
+        <button
+          type="button"
+          className={styles.storyToggle}
+          aria-expanded={expanded}
+          aria-controls={`${id}-text`}
+          onClick={() => setExpanded(current => !current)}
+        >
+          {expanded ? "Read less" : "Read more"}
+          <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+        </button>
+      )}
+    </>
+  );
+}
+
 export function Stories() {
-  const [expandedStories, setExpandedStories] = useState<string[]>([]);
-
-  function toggleStory(id: string) {
-    setExpandedStories((current) => {
-      if (current.includes(id)) {
-        return current.filter((storyId) => storyId !== id);
-      }
-
-      return [...current, id];
-    });
-  }
-
   return (
     <section
       id="stories"
@@ -40,14 +66,6 @@ export function Stories() {
 
       <div className={styles.stories}>
         {jassStories.map((story, index) => {
-          const expanded = expandedStories.includes(story.id);
-          const opening = story.paragraphs[0] ?? "";
-          const needsExpansion = opening.length > 240 || story.paragraphs.length > 1;
-          const preview = opening.length > 240
-            ? `${opening.slice(0, 240).replace(/\s+\S*$/, "")}…`
-            : opening;
-          const visibleParagraphs = expanded ? story.paragraphs : [preview];
-
           return (
             <article
               key={story.id}
@@ -76,26 +94,21 @@ export function Stories() {
               <div className={styles.storyCopy}>
                 <p className="eyebrow">{story.role}</p>
                 <h3 id={`${story.id}-heading`}>{story.name}</h3>
-                <div
-                  id={`${story.id}-text`}
-                  className={styles.paragraphs}
-                >
-                  {visibleParagraphs.map((paragraph, paragraphIndex) => (
-                    <p key={`${story.id}-${paragraphIndex}`}>{paragraph}</p>
+                <div className={styles.summaries}>
+                  {story.summaries.every(summary => !summary.title) && (
+                    <h4 className={styles.textHeading}>How it all started</h4>
+                  )}
+                  {story.summaries.map(summary => (
+                    <section key={summary.id} className={styles.summary} aria-labelledby={summary.title ? `${story.id}-${summary.id}-heading` : undefined}>
+                      {summary.title && <h4 id={`${story.id}-${summary.id}-heading`} className={styles.textHeading}>{summary.title}</h4>}
+                      <ExpandableText id={`${story.id}-${summary.id}`} paragraphs={summary.paragraphs} />
+                    </section>
                   ))}
                 </div>
-                {needsExpansion && (
-                  <button
-                    type="button"
-                    className={styles.storyToggle}
-                    aria-expanded={expanded}
-                    aria-controls={`${story.id}-text`}
-                    onClick={() => toggleStory(story.id)}
-                  >
-                    {expanded ? "Read less" : "Read more"}
-                    <span aria-hidden="true">{expanded ? "−" : "+"}</span>
-                  </button>
-                )}
+                <section className={styles.introduction} aria-labelledby={`${story.id}-intro-heading`}>
+                  <h4 id={`${story.id}-intro-heading`} className={styles.textHeading}>About {story.name}</h4>
+                  <ExpandableText id={story.id} paragraphs={story.paragraphs} />
+                </section>
               </div>
             </article>
           );
