@@ -177,7 +177,7 @@ export const jassStories: JassStory[] = [
           "I’m an international Computer Engineering student studying in Latvia, and one summer I got the opportunity to travel to Greece and work as a waiter at Gennadi Grand Resort.",
           "When I first arrived, everything was new. I didn’t know many people, and I was still trying to find my place. Then one ordinary day during lunch in the hotel cafeteria, a lady sitting nearby offered me some Tabasco. It was such a small moment, but somehow, that was the beginning of something much bigger.",
           "Her name was Susan, a chef at Gennadi Grand Resort. As time passed, I got to know her and discovered what a genuine, kind, and interesting person she was.",
-          "One day, Susan was talking about a Spider-Man movie she really wanted to watch. I told her, “Maybe I can find a link for you.” From that little conversation, we somehow became good friends.",
+          "One day, Susan was talking about a Superman movie she really wanted to watch. I told her, “Maybe I can find a link for you.” From that little conversation, we somehow became good friends.",
           "Eventually, I properly introduced myself and told her about my work with computers, programming, websites, and technology.",
           "Then Susan told me about a dream she had, creating her own inspirational cookbook and having a website where she could share her recipes, experiences, and passion for cooking.",
           "I simply said, **“Let’s do it.” And here we are.**",
