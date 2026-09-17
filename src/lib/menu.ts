@@ -71,34 +71,7 @@ export const menu = [
     description: "Crispy waffles meet bold, classic buffalo flavour.",
     image: "Buffalo Waffles.jpg",
   },
-  {
-    category: "Desserts & drinks",
-    name: "Chocolate Lava Cake",
-    price: 8,
-    description: "Warm chocolate cake with a soft, molten centre.",
-    image: "Buffalo Waffles.jpg",
-  },
-  {
-    category: "Desserts & drinks",
-    name: "Caramel Cheesecake",
-    price: 7,
-    description: "Creamy cheesecake with a buttery caramel finish.",
-    image: "Buffalo Waffles.jpg",
-  },
-  {
-    category: "Desserts & drinks",
-    name: "Tropical Mocktail",
-    price: 6,
-    description: "Bright citrus and pineapple with a refreshing hint of mint.",
-    image: "Pop Soda and Dragon Cocktails.jpg",
-  },
-  {
-    category: "Desserts & drinks",
-    name: "Iced Coffee Delight",
-    price: 5,
-    description: "Smooth cold coffee with cream and a touch of vanilla.",
-    image: "Pop Soda and Dragon Cocktails.jpg",
-  },
+
   {
     category: "Desserts & drinks",
     name: "Pop Soda & Dragon Cocktails",
