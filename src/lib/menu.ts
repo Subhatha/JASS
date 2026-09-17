@@ -71,7 +71,7 @@ export const menu = [
     description: "Crispy waffles meet bold, classic buffalo flavour.",
     image: "Buffalo Waffles.jpg",
   },
-
+  
   {
     category: "Desserts & drinks",
     name: "Pop Soda & Dragon Cocktails",
